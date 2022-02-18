@@ -1,0 +1,585 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SearchGo</title>
+        <link rel="icon" href="{% static 'imgs/title_logo.svg' %}" type="image/icon type">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet" />
+
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />   
+
+        <link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %}" />
+
+        <!-- carousel -->
+        <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' %}" rel="stylesheet">
+        <style></style>
+        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="{% static 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js' %}"></script>
+        <link href="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!--  -->
+        
+        <!-- dropdown menu -->
+        <link rel="stylesheet" type="text/css" href="{% static 'test_menu/test.css' %}">        
+        <!-- <link rel="stylesheet" href="dropdown_menu/style.css"> -->
+		<!-- <link rel="stylesheet" href="dropdown_menu/main.js"> -->
+
+        <!-- footer -->
+        <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'footer/css/ionicons.min.css' %}">
+		<link rel="stylesheet" href="{% static 'footer/css/style.css' %}">
+
+     </head>
+    
+    <body>
+        <!-- <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" style="color: white;" href="homepage.html">SearchGo</a>
+                </div>
+                <ul class="nav navbar-nav"> -->
+                <!-- <li class="active"><a href="homepage.html">Home</a></li> -->
+                <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="#">Page 1-1</a></li>
+                    <li><a href="#">Page 1-2</a></li>
+                    <li><a href="#">Page 1-3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Page 2</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="usersignup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="userlogin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>  --> 
+        <section style="background-color: #D6E4ED; background-image: url('{% static 'imgs/bg_home.jpg' %}'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
+    
+            <nav class="navbar navbar-expand-sm navbar-dark ">
+                <!-- Brand -->
+                <a class="navbar-brand" href="{% static 'homepage.html' %}" style="color: #7ed0ff; font-size: 50px; margin-top: 7px; margin-left: 10px;"><span class="fab fa-searchengin">&nbsp SearchGo</span></a>
+            
+                <!-- Links -->
+                <ul class="navbar-nav" style="font-size: 25px; padding-left: 15%; ">
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static 'homepage.html' %}" style="color: rgb(54, 102, 192);">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static '#' %}" style="color: rgb(54, 102, 192);">About</a>
+                    </li>
+                
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">More</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto" >
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item" style=" padding-right: 20px;">
+                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 10px;">
+                            <a href="/login/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-sign-in-alt">&nbsp Login</span></a>
+                        </button>
+                    </li>
+                    
+                    <li class="nav-item" style="padding-right: 300px;">
+                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 10px;">
+                            <a href="/signup/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-user">&nbsp Sign Up</span></a>
+                        </button>
+                    </li>
+                    {% else %}
+                    <!-- LOG-OUT -->
+
+                    <li class="nav-item" style="margin-right: 370px;">
+                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: #d1f0ff; margin-top: 10px;">
+                            <a href="/logout/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-sign-out-alt">&nbsp Logout</span></a>
+                        </button>
+                    </li>
+                    {% endif %}
+                </ul>
+
+            </nav>
+          
+        
+            <div class="container" style="margin-left: -270px ">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        
+                        <div class="row">
+                            <div class="col">
+                                <h1 style="text-align: center; font-size: 70px; margin-top: 100px; color: #2E3B43;" ><b>SearchGo</b></h1>
+                            </div>
+                        </div>            
+
+                        <div class="row no-gutters mt-3 align-items-center">
+                            <div class="col">
+                                <input class="form-control border-secondary rounded-pill pr-5" style="padding-top: 35px; padding-bottom: 35px; padding-left: 30px; font-size: 20px;  " type="search" placeholder="search here" id="search1">
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" type="button">
+                                    <a href="#jump" onclick="result_display()" >
+                                    <i class="fa fa-search" style="font-size: 25px; "></i>
+                                </button>
+                            </div>  
+                        </div>  
+                        
+                        <div class="row">
+                            <div class="col">
+                                <h1 style="text-align: center; font-size: 30px; margin-top: 10px; color: #01A3D4"><b>- Immense Learning</b></h1>
+                            </div>
+                        </div> 
+
+                    </div>
+                </div>            
+            </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </section>
+
+        <!-- DISPLAY JS -->
+        <script>
+            function result_display() {
+              var x = document.getElementById("search_result");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              }
+            }
+        </script>
+
+        <a id="jump">
+            <br><br><br>
+            <div style="text-align: center; font-size: 40px;">Your one stop solution for <b>Immense Learning</b></div>
+        </a>    
+            <br><br>
+
+        <!-- search display -->
+        <div id="search_result" style="display: none;">
+            <section style="background-color: #CAEBFC; text-align: center; font-size: 30px; padding: 35px; ">
+                <div class="container-fluid" style="background-color: #AADDFA; width:device-width; text-align: center; font-size: 30px; padding: 35px;">
+                    {% class geeks: 
+                        def __init__(self, field, category, subcategory): 
+                            self.category = category 
+                            self.subcategory = subcategory
+                            self.field = field
+                    # creating list       
+                    list = [] 
+                      
+                    # appending instances to list 
+                    list.append( geeks('Data Science','Django','Overview') )
+                    list.append( geeks('Computer Science', 'Java', 'Overview') )
+                    %}  
+                    {% for obj in list %}
+                    <div class="row">
+                        <div class="col-3">
+                            {{obj.field}}
+                        </div>
+                        <div class="col-3">
+                            {{obj.category}}
+                        </div>
+                        <div class="col-3">
+                            {{obj.subcategory}}
+                        </div>
+                        <div class="col-3">
+                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
+                            <ul>
+                                <li class="nav dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Github</a>
+                                        <a class="dropdown-item" href="#">W3 School</a>
+                                        <a class="dropdown-item" href="#">Tutorial Point</a>
+                                    </div>
+                                </li>        
+                            </ul>
+                        </div> 
+                    </div>
+                    {% endfor %}
+                </div>
+                <br>
+            </section>
+        </div>
+{% comment %} 
+                <div class="container-fluid" style="background-color: #AADDFA; text-align: center; font-size: 30px; padding: 35px;">
+                    <div class="row">
+                        <div class="col-3">
+                            Data Science
+                        </div>
+                        <div class="col-3">
+                            Javascript
+                        </div>
+                        <div class="col-3">
+                            Overview
+                        </div>
+                        <div class="col-3">
+                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
+                            <ul>
+                                <li class="nav dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Github</a>
+                                        <a class="dropdown-item" href="#">W3 School</a>
+                                        <a class="dropdown-item" href="#">Tutorial Point</a>
+                                    </div>
+                                </li>        
+                            </ul>
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <div class="container-fluid" style="background-color: #AADDFA; text-align: center; font-size: 30px; padding: 35px;">
+                    <div class="row">
+                        <div class="col-3">
+                            Data Science
+                        </div>
+                        <div class="col-3">
+                            Javascript
+                        </div>
+                        <div class="col-3">
+                            Overview
+                        </div>
+                        <div class="col-3">
+                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
+                            <ul>
+                                <li class="nav dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Github</a>
+                                        <a class="dropdown-item" href="#">W3 School</a>
+                                        <a class="dropdown-item" href="#">Tutorial Point</a>
+                                    </div>
+                                </li>        
+                            </ul>
+                        </div> 
+                </div>
+            </section>
+        </div> {% endcomment %}
+
+        <section class="pt-5 pb-5">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="mb-3">Computer Science </h3>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators1" role="button" data-slide="next">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+        
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card ">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/blockchain.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Blockchain</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    
+                                                    <a href="#" class="stretched-link">
+                                                        
+                                                    </a>
+
+                                                    <!-- .................................... -->
+
+                                                    <!-- <main>            
+                                                        <input type="checkbox" id="myInput">
+                                                        <label for="myInput">
+                                                            <span class="bar top"></span>
+                                                            <span class="bar middle"></span>
+                                                            <span class="bar bottom"></span>
+                                                        </label>
+                                                        <aside>
+                                                          <div class="aside-section aside-left">
+                                                            <div class="aside-content">
+                                                                <div class="card ">
+                                                                    <img class="img-fluid" alt="100%x280" src="imgs/cards/blockchain.jpg">
+                                                                    <div class="card-body">
+                                                                        <h4 class="card-title"><p>Blockchain</p></h4>
+                                                                        
+                                                                        <a href="userlogin.html" class="stretched-link">
+                                                                            
+                                                                        </a>
+                                            
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="aside-section aside-right">
+                                                            <ul class="aside-list">
+                                                              <li><a href="" class="aside-anchor">Introduction to Blockchain</a></li>
+                                                              <li><a href="" class="aside-anchor">Decentralized Applications - DApps</a></li>
+                                                              <li><a href="" class="aside-anchor">IoT and Blockchain: Challenges and Risks</a></li>
+                                                              <li><a href="" class="aside-anchor">Cybersecurity & Blockchain</a></li>
+                                                              <li><a href="" class="aside-anchor">Quantum Computing</a></li>
+                                                              <li><a href="" class="aside-anchor">Cryptocurrency</a></li>
+                                            
+                                                            </ul>
+                                                          </div>
+                                                        </aside>
+                                                      </main> -->
+
+                                                    <!-- .................................... -->
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/django.jpeg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Django</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/python.png' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Python</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/java.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Java</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/js.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Javascript</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/c++.png' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">C++</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/c.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">C Programming</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/html.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">HTML</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/dbms.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">DBMS</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-5 pb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="mb-3">Data Science </h3>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+        
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/ai.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Artificial Intelligence</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/bd.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Big Data</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/cc.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Cloud Computing</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+        
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/da.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Data Analytics</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/dm.png' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Data Mining</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/ml.jpg' %}">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Machine Learning</h4>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- drop down menu -->
+
+        <!-- FOOTER -->
+        <footer class="footer-07" style="margin-top: 50px;">
+			<div class="container" style="margin-top: -50px; margin-bottom: -80px;">
+				<div class="row justify-content-center">
+					<div class="col-md-12 text-center">
+						<h2 class="footer-heading"><a href="#" class="logo">SearchGo.com</a></h2>
+						<p class="menu">
+							<a href="#">Home</a>
+							<a href="#">About</a>
+							<a href="#">Login</a>
+							<a href="#">SignUp</a>
+							<a href="#">Contact</a>
+						</p>
+						<ul class="ftco-footer-social p-0">
+							<li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="ion-logo-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="ion-logo-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row mt-5">
+					<div class="col-md-12 text-center">
+						<p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+                                                    
+
+    </body>
+</html>

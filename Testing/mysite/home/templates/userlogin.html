@@ -11,6 +11,7 @@
     </head>
 
     <body>
+        <form class="login-form" method="POST" action="/login/">
         {% csrf_token %}
     <section style="background-color: #D6E4ED ; background-image: url('{% static 'imgs/bg_lib_2.jpg' %}'); background-repeat: no-repeat; background-attachment: fixed ; background-size: 100% 100%;">
 
@@ -28,7 +29,6 @@
                                 </center>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col">
                                 <center>
@@ -48,15 +48,15 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class="form-control rounded-pill" id="TextBox3" placeholder="User ID"></input>
+                                    <input type="text" class="form-control rounded-pill" name="username" id="TextBox3" placeholder="Username"></input>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control rounded-pill" id="TextBox4" placeholder="Password" ></input>
+                                    <input type="password" class="form-control rounded-pill" name="password" id="TextBox4" placeholder="Password" ></input>
                                 </div>
-
+                                <h4>{{ msg }}</h4>
                                 <div class="form-group">
-                                    <input class="btn btn-success btn-block btn-lg rounded-pill" id="Button3" type="button" value="Login">
+                                    <input class="btn btn-success btn-block btn-lg rounded-pill" id="Button3" type="submit" value="Login">
                                     <hr />
                                 </div>
 
@@ -69,8 +69,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <a href="usersignup.html">
-                                        <input class="btn btn-primary btn-block btn-lg rounded-pill" id="Button2" type="button" value="Sign Up" />                                
+                                    <a href="/signup/">
+                                        <input class="btn btn-primary btn-block btn-lg rounded-pill" id="Button2" type="button" value="Sign Up"/>                                
                                     </a>
                                 </div>
                             </div>  
@@ -87,7 +87,7 @@
         
     <br /><br /><br><br><br>
     </section>
-    
+    </form>
     </body>
 
 </html>
