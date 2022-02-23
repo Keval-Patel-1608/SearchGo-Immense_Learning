@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
     <head>
         <title>SearchGo</title>
         <link rel="icon" href="{% static 'imgs/title_logo.svg' %}" type="image/icon type">
@@ -11,15 +11,14 @@
 
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />   
 
-        <link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
 
         <!-- carousel -->
-        <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' %}" rel="stylesheet">
-        <style></style>
-        <script type="text/javascript" src=""></script>
-        <script type="text/javascript" src="{% static 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js' %}"></script>
-        <link href="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+        {% comment %} <script type="text/javascript" src=""></script> {% endcomment %}
+        <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+        <script type="text/javascript" src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
         <!--  -->
         
         <!-- dropdown menu -->
@@ -28,46 +27,43 @@
 		<!-- <link rel="stylesheet" href="dropdown_menu/main.js"> -->
 
         <!-- footer -->
-        <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900' %}" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900'rel="stylesheet">
         <link rel="stylesheet" href="{% static 'footer/css/ionicons.min.css' %}">
 		<link rel="stylesheet" href="{% static 'footer/css/style.css' %}">
 
      </head>
     
     <body>
-        <!-- <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                <a class="navbar-brand" style="color: white;" href="homepage.html">SearchGo</a>
-                </div>
-                <ul class="nav navbar-nav"> -->
-                <!-- <li class="active"><a href="homepage.html">Home</a></li> -->
-                <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="#">Page 1-1</a></li>
-                    <li><a href="#">Page 1-2</a></li>
-                    <li><a href="#">Page 1-3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Page 2</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li><a href="usersignup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="userlogin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </nav>  --> 
-        <section style="background-color: #D6E4ED; background-image: url('{% static 'imgs/bg_home.jpg' %}'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
+
+        <style>
+            ::-webkit-scrollbar {
+            width: 15px;
+            height: 15px;
+            }
+            ::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            /* background-color: rgb(29, 30, 34); */
+            margin-block: 0.5em;
+            }
+            ::-webkit-scrollbar-thumb {
+            background-image: linear-gradient(45deg, #00aeff, #a68eff);
+            border-radius: 10px;
+            -webkit-box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
+            }
+        </style>
+
+        <section style="background-color: #D6E4ED; background-image: url('{% static 'imgs/bg_home.jpg' %}'); background-repeat: no-repeat; background-attachment: relative; background-size: 100% 100%;">
     
             <nav class="navbar navbar-expand-sm navbar-dark ">
                 <!-- Brand -->
-                <a class="navbar-brand" href="{% static 'homepage.html' %}" style="color: #7ed0ff; font-size: 50px; margin-top: 7px; margin-left: 10px;"><span class="fab fa-searchengin">&nbsp SearchGo</span></a>
+                <a class="navbar-brand" href="/" style="color: #7ed0ff; font-size: 50px; margin-top: 7px; margin-left: 10px;"><span class="fab fa-searchengin">&nbsp SearchGo</span></a>
             
                 <!-- Links -->
                 <ul class="navbar-nav" style="font-size: 25px; padding-left: 15%; ">
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% static 'homepage.html' %}" style="color: rgb(54, 102, 192);">Home</a>
+                        <a class="nav-link" href="/" style="color: rgb(54, 102, 192);">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -89,14 +85,15 @@
                 <ul class="navbar-nav ml-auto" >
                     {% if not user.is_authenticated %}
                     <li class="nav-item" style=" padding-right: 20px;">
-                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 10px;">
-                            <a href="/login/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-sign-in-alt">&nbsp Login</span></a>
+                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 5px;">
+                            {% comment %} <a href="/login/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-sign-in-alt">&nbsp Login</span></a> {% endcomment %}
+                            <a href="/login/" class="nav-link" style="color: #4da9ff; margin-top: -5px;"><span class="fa fa-arrow-circle-right">&nbsp Login</span></a>
                         </button>
                     </li>
                     
                     <li class="nav-item" style="padding-right: 300px;">
-                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 10px;">
-                            <a href="/signup/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-user">&nbsp Sign Up</span></a>
+                        <button class="form-control border-primary rounded-pill" style="font-size: 20px; background-color: transparent; margin-top: 5px;">
+                            <a href="/signup/" class="nav-link" style="color: #4da9ff; margin-top: -5px;"><span class="fa fa-user">&nbsp Sign Up</span></a>
                         </button>
                     </li>
                     {% else %}
@@ -116,26 +113,27 @@
             <div class="container" style="margin-left: -270px ">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
-                        
+                        <form method = "POST"> 
+                            {% csrf_token %}
                         <div class="row">
                             <div class="col">
                                 <h1 style="text-align: center; font-size: 70px; margin-top: 100px; color: #2E3B43;" ><b>SearchGo</b></h1>
                             </div>
                         </div>            
-
+                        {% comment %} searchbar {% endcomment %}
                         <div class="row no-gutters mt-3 align-items-center">
                             <div class="col">
-                                <input class="form-control border-secondary rounded-pill pr-5" style="padding-top: 35px; padding-bottom: 35px; padding-left: 30px; font-size: 20px;  " type="search" placeholder="search here" id="search1">
+                                <input class="form-control border-secondary rounded-pill pr-5 " style="margin-top: 10px; padding-top: 35px; padding-bottom: 35px; padding-left: 30px; font-size: 20px;  " type="search" placeholder="search here" name="search1" id="search1">
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" type="button">
-                                    <a href="#jump" onclick="result_display()" >
-                                    <i class="fa fa-search" style="font-size: 25px; "></i>
-                                </button>
+                                <a href = "#jump"><button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" style="margin-top: 10px;" type="button">
+                                        <button type = "submit" class="fa fa-search" style="font-size: 22px; color: black; border: none; background-color: transparent;" onclick="result_display()"></button>
+                                </button></a>
                             </div>  
                         </div>  
-                        
+                    </form>
                         <div class="row">
+
                             <div class="col">
                                 <h1 style="text-align: center; font-size: 30px; margin-top: 10px; color: #01A3D4"><b>- Immense Learning</b></h1>
                             </div>
@@ -146,7 +144,6 @@
             </div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
-
         <!-- DISPLAY JS -->
         <script>
             function result_display() {
@@ -164,106 +161,39 @@
             <br><br>
 
         <!-- search display -->
-        <div id="search_result" style="display: none;">
-            <section style="background-color: #CAEBFC; text-align: center; font-size: 30px; padding: 35px; ">
-                <div class="container-fluid" style="background-color: #AADDFA; width:device-width; text-align: center; font-size: 30px; padding: 35px;">
-                    {% class geeks: 
-                        def __init__(self, field, category, subcategory): 
-                            self.category = category 
-                            self.subcategory = subcategory
-                            self.field = field
-                    # creating list       
-                    list = [] 
-                      
-                    # appending instances to list 
-                    list.append( geeks('Data Science','Django','Overview') )
-                    list.append( geeks('Computer Science', 'Java', 'Overview') )
-                    %}  
-                    {% for obj in list %}
-                    <div class="row">
-                        <div class="col-3">
-                            {{obj.field}}
+        <div id="search_result">
+                {% for obj in context %}
+                    <section style="background-color: #CAEBFC; text-align: center; font-size: 30px;">
+                    <div class="container-fluid gradient-45deg-light-blue-cyan gradient-shadow white-text" style="background-color: #AADDFA; width:device-width; text-align: center; font-size: 30px; margin-bottom: -20px; border-radius: 5px;">
+                        <div class="row" >
+                            <div class="col-3" style="padding-top: 18px;">
+                                {{obj.fields}}
+                            </div>
+                            <div class="col-3" style="padding-top: 18px;">
+                                {{obj.category}}
+                            </div>
+                            <div class="col-3" style="padding-top: 18px;">
+                                {{obj.subcategory}}
+                            </div>
+                            <div class="col-3">
+                                <ul>
+                                    <li class="nav dropdown">
+                                        <a class="nav-link dropdown-toggle white-text" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 18px;">Link</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Github</a>
+                                            <a class="dropdown-item" href="#">W3 School</a>
+                                            <a class="dropdown-item" href="#">Tutorial Point</a>
+                                        </div>
+                                    </li>        
+                                </ul>
+                            </div> 
                         </div>
-                        <div class="col-3">
-                            {{obj.category}}
-                        </div>
-                        <div class="col-3">
-                            {{obj.subcategory}}
-                        </div>
-                        <div class="col-3">
-                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
-                            <ul>
-                                <li class="nav dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Github</a>
-                                        <a class="dropdown-item" href="#">W3 School</a>
-                                        <a class="dropdown-item" href="#">Tutorial Point</a>
-                                    </div>
-                                </li>        
-                            </ul>
-                        </div> 
                     </div>
-                    {% endfor %}
-                </div>
-                <br>
+                    <br>
+                {% endfor %}   
             </section>
         </div>
-{% comment %} 
-                <div class="container-fluid" style="background-color: #AADDFA; text-align: center; font-size: 30px; padding: 35px;">
-                    <div class="row">
-                        <div class="col-3">
-                            Data Science
-                        </div>
-                        <div class="col-3">
-                            Javascript
-                        </div>
-                        <div class="col-3">
-                            Overview
-                        </div>
-                        <div class="col-3">
-                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
-                            <ul>
-                                <li class="nav dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Github</a>
-                                        <a class="dropdown-item" href="#">W3 School</a>
-                                        <a class="dropdown-item" href="#">Tutorial Point</a>
-                                    </div>
-                                </li>        
-                            </ul>
-                        </div> 
-                    </div>
-                </div>
-                <br>
-                <div class="container-fluid" style="background-color: #AADDFA; text-align: center; font-size: 30px; padding: 35px;">
-                    <div class="row">
-                        <div class="col-3">
-                            Data Science
-                        </div>
-                        <div class="col-3">
-                            Javascript
-                        </div>
-                        <div class="col-3">
-                            Overview
-                        </div>
-                        <div class="col-3">
-                            <!-- <a href="userlogin.html" class="button-primary">View ></a>                     -->
-                            <ul>
-                                <li class="nav dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: rgb(54, 102, 192);">Link</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Github</a>
-                                        <a class="dropdown-item" href="#">W3 School</a>
-                                        <a class="dropdown-item" href="#">Tutorial Point</a>
-                                    </div>
-                                </li>        
-                            </ul>
-                        </div> 
-                </div>
-            </section>
-        </div> {% endcomment %}
+        <br>
 
         <section class="pt-5 pb-5">
             
@@ -289,55 +219,11 @@
         
                                         <div class="col-md-4 mb-3">
                                             <div class="card ">
-                                                <img class="img-fluid" alt="100%x280" src="{% static 'imgs/cards/blockchain.jpg' %}">
+                                                <img class="img-fluid" alt="blockchain" src="{% static 'imgs/cards/blockchain.jpg' %}">
                                                 <div class="card-body">
                                                     <h4 class="card-title">Blockchain</h4>
                                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    
-                                                    <a href="#" class="stretched-link">
-                                                        
-                                                    </a>
-
-                                                    <!-- .................................... -->
-
-                                                    <!-- <main>            
-                                                        <input type="checkbox" id="myInput">
-                                                        <label for="myInput">
-                                                            <span class="bar top"></span>
-                                                            <span class="bar middle"></span>
-                                                            <span class="bar bottom"></span>
-                                                        </label>
-                                                        <aside>
-                                                          <div class="aside-section aside-left">
-                                                            <div class="aside-content">
-                                                                <div class="card ">
-                                                                    <img class="img-fluid" alt="100%x280" src="imgs/cards/blockchain.jpg">
-                                                                    <div class="card-body">
-                                                                        <h4 class="card-title"><p>Blockchain</p></h4>
-                                                                        
-                                                                        <a href="userlogin.html" class="stretched-link">
-                                                                            
-                                                                        </a>
-                                            
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="aside-section aside-right">
-                                                            <ul class="aside-list">
-                                                              <li><a href="" class="aside-anchor">Introduction to Blockchain</a></li>
-                                                              <li><a href="" class="aside-anchor">Decentralized Applications - DApps</a></li>
-                                                              <li><a href="" class="aside-anchor">IoT and Blockchain: Challenges and Risks</a></li>
-                                                              <li><a href="" class="aside-anchor">Cybersecurity & Blockchain</a></li>
-                                                              <li><a href="" class="aside-anchor">Quantum Computing</a></li>
-                                                              <li><a href="" class="aside-anchor">Cryptocurrency</a></li>
-                                            
-                                                            </ul>
-                                                          </div>
-                                                        </aside>
-                                                      </main> -->
-
-                                                    <!-- .................................... -->
+                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>                                                    </a>
                                                 </div>
         
                                             </div>
@@ -442,6 +328,283 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- jump1 -->
+        <script>
+            function subcategory_display() {
+              var x = document.getElementById("subcategory");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              }
+            }
+        </script>
+
+        <a id="jump1"></a> 
+
+        <section id="subcategory" style="display: none; background-color: #F9F9F9; width: 100%; padding: 1%;">
+            <p><h1 style="text-align: center;">Blockchain</h1></p>
+            <hr style="height: 3px; border-radius: 2px;" class="gradient-45deg-red-blue">
+                <div id="card-stats" class="pt-0">
+                    <div class="row">
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-200 white-text animate fadeLeft">
+                                <div class="padding-4">
+                                    <div class="col">
+                                        <div class="row white-text" style="font-size: 20px; ">                                                                                
+                                            Introduction to Blockchain    
+                                        <hr style="width: 96%;">
+                                        </div>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
+                                                Blockchain Definition: What You Need to Know - Investopedia
+                                            </div>
+                                        </a>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
+                                                What is blockchain? - Euromoney Learning
+                                            </div>                                    
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-red-pink gradient-shadow min-height-200 white-text animate fadeRight">
+                                <div class="padding-4">
+                                    <div class="col">
+                                        <div class="row white-text" style="font-size: 20px; ">                                                                                
+                                            Decentralized Applications    
+                                        <hr style="width: 96%;">
+                                        </div>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
+                                                What is a dApp? Decentralized Application on the Blockchain - Blockchainhub
+                                            </div>
+                                        </a>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
+                                                Decentralized applications (dapps) - Ethereum.org
+                                            </div>                                    
+                                        </a>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-amber-amber gradient-shadow min-height-200 white-text animate fadeLeft">
+                                <div class="padding-4">
+                                    <div class="col">
+                                        <div class="row white-text" style="font-size: 20px; ">                                                                                
+                                            Iot and Blockchain    
+                                        <hr style="width: 96%;">
+                                        </div>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
+                                                What is IoT with blockchain? - IBM
+                                            </div>
+                                        </a>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
+                                                Blockchain and the Internet of Things - Iscoop.eu
+                                            </div>                                    
+                                        </a>                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col s12 m6 l6 xl3">
+                            <div class="card gradient-45deg-green-teal gradient-shadow min-height-200 white-text animate fadeRight">
+                                <div class="padding-4">
+                                    <div class="col">
+                                        <div class="row white-text" style="font-size: 20px; ">                                                                                
+                                            Cybersecurity and Blockchain    
+                                        <hr style="width: 96%;">
+                                        </div>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
+                                                Role of Blockchain in Cybersecurity - GeeksforGeeks
+                                            </div>
+                                        </a>
+                                        <a href="#" class="white-text link-hover">
+                                            <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
+                                                Blockchain and Cybersecurity - Deloitte
+                                            </div>                                    
+                                        </a>                                  
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                 </div>
+
+                <style>
+                #card-stats {
+                    -webkit-text-size-adjust: 100%;
+                    font-family: Muli,sans-serif!important;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    color: #6b6f82;
+                    font-size: 15px;
+                    box-sizing: inherit;
+                    padding-top: 0!important;
+                }
+                
+                .link-hover div:hover{
+                    background-color: rgba(255, 255, 255, 0.2) !important;
+                    /* background-color: #2E3B43 !important; */
+                }
+    
+                .row {                 
+                    box-sizing: inherit;
+                    margin-bottom: 0;
+                    margin-right: -.75rem;
+                    margin-left: -.75rem;
+                }   
+                
+                .gradient-45deg-red-blue {
+                    background: linear-gradient(90deg,#009cb1, #c40041)!important;
+                }
+                
+                .gradient-45deg-light-blue-cyan.gradient-shadow {
+                    box-shadow: 0 6px 20px 0 rgba(38,198,218,.5)!important;
+                }
+    
+                .gradient-45deg-light-blue-cyan {
+                    background: linear-gradient(45deg,#0288d1,#26c6da)!important;
+                }
+    
+                .gradient-45deg-red-pink.gradient-shadow {
+                    box-shadow: 0 6px 20px 0 rgba(244,143,177,.5)!important;
+                }
+    
+                .gradient-45deg-red-pink {
+                    background: linear-gradient(45deg,#ff5252,#f48fb1)!important;
+                }
+    
+                .gradient-45deg-amber-amber {
+                    background: linear-gradient(45deg,#ff6f00,#ffca28)!important;
+                }
+    
+                .gradient-45deg-amber-amber.gradient-shadow {
+                    box-shadow: 0 6px 20px 0 rgba(255,202,40,.5)!important;
+                }
+                
+                .gradient-45deg-green-teal {
+                    background: linear-gradient(45deg,#43a047,#1de9b6)!important;
+                }
+                .gradient-45deg-green-teal.gradient-shadow {
+                    box-shadow: 0 6px 20px 0 rgba(29,233,182,.5)!important;
+                }
+    
+                .min-height-200 {
+                    min-height: 200px!important;
+                }
+    
+                .white-text {
+                    color: #fff!important;
+                }
+    
+                .padding-4 {
+                    padding: 4%!important;
+                }
+    
+                .column {
+                                
+                    box-sizing: border-box;
+                    float: left;
+                    min-height: 1px;
+                    padding: 0 1rem;
+                    right: auto;
+                    left: auto;
+                    margin-left: auto;
+                    width: 25%;
+                }
+    
+                .animate{
+                    -webkit-animation-duration:1s;
+                    animation-duration:1s;
+                    -webkit-animation-fill-mode:both;
+                    animation-fill-mode:both;
+                    /* animation-delay: 1s; */
+    
+                }
+
+                .animated{
+                    -webkit-animation-duration:1s;
+                    animation-duration:1s;
+                    -webkit-animation-fill-mode:both;
+                    animation-fill-mode:both;
+                    animation-delay: 0.5s;
+    
+                }
+    
+                .fadeRight{
+                    -webkit-animation-name:fadeRight;
+                    animation-name:fadeRight
+                }
+    
+                @-webkit-keyframes fadeRight{
+                    0%{
+                        opacity:0;
+                        -webkit-transform:translateX(200px);
+                        transform:translateX(200px)
+                    }
+                    100%{
+                        opacity:1;
+                        -webkit-transform:translateX(0);
+                        transform:translateX(0)
+                    }
+                }
+                @keyframes fadeRight{
+                    0%{
+                        opacity:0;
+                        -webkit-transform:translateX(200px);
+                        -ms-transform:translateX(200px);
+                        transform:translateX(200px)
+                    }
+                    100%{
+                        opacity:1;
+                        -webkit-transform:translateX(0);
+                        -ms-transform:translateX(0);
+                        transform:translateX(0)
+                    }
+                }
+    
+                .fadeLeft{
+                    -webkit-animation-name:fadeLeft;
+                    animation-name:fadeLeft;
+                }
+                
+                @-webkit-keyframes fadeLeft{
+                    0%{
+                        opacity:0;
+                        -webkit-transform:translateX(-200px);
+                        transform:translateX(-200px)
+                    }
+                    100%{
+                        opacity:1;
+                        -webkit-transform:translateX(0);
+                        transform:translateX(0)
+                    }
+                }
+                @keyframes fadeLeft{
+                    0%{
+                        opacity:0;
+                        -webkit-transform:translateX(-200px);
+                        -ms-transform:translateX(-200px);
+                        transform:translateX(-200px)
+                    }
+                    100%{
+                        opacity:1;
+                        -webkit-transform:translateX(0);
+                        -ms-transform:translateX(0);
+                        transform:translateX(0)
+                    }
+                }
+                </style>
         </section>
 
         <section class="pt-5 pb-5">

@@ -38,5 +38,5 @@ class Link(models.Model):
     Sub_CategoryFK = models.ForeignKey(Sub_Category, on_delete=models.CASCADE)
     Data_link = models.URLField(max_length=200, blank=True)
     Count = models.IntegerField(max_length=6, default = 0)
-    
+    link_description = models.CharField(max_length=200, blank = True)
     
