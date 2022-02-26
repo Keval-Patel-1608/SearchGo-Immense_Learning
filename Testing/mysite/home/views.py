@@ -1,3 +1,4 @@
+from re import A
 from unicodedata import category
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -8,6 +9,7 @@ from django.contrib.auth.models import AnonymousUser
 from datetime import datetime, timedelta
 from django.http import HttpResponse
 from matplotlib.style import context
+from numpy import empty
 from .forms import SignUpForm
 from .models import Fields, Category, Sub_Category, Link
 
@@ -28,25 +30,51 @@ class homePage(TemplateView):
     def post(self, request, **kwargs):
         search_word=""
         search_word = request.POST['search1']
+        if search_word == "" or search_word == " ":
+            return render(request, "homepage.html")
         context = self.search(search_word)
-        #print(context)
         return render(request, "homepage.html", {'context':context})
         
     def search(self, search_word):
         datasets = Sub_Category.objects.filter(Sub_Name__contains = search_word)
+        dataset_category = Category.objects.filter(Category_Name__contains = search_word)
+        dataset_field = Fields.objects.filter(Field_Name__contains = search_word)
         context = []
-        for d in datasets:
-            context.append(
-                {
-                    "subcategory": d.Sub_Name,
-                    "category": d.CategoryFK.Category_Name,
-                    "fields": d.CategoryFK.FieldFK.Field_Name,
-                    "links": Link.objects.filter(Sub_CategoryFK = d)
-                }
-            )
+        if dataset_field:
+            for d in dataset_field:
+                context.append(
+                    {
+                        "fields": d.Field_Name,
+                        "category": Category.objects.filter()
+                    }
+                )
 
-        print(context)
-        return context
+        if dataset_category:
+            for d in dataset_category:
+                context.append(
+                    {
+                        "category": d.Category_Name,
+                        "fields": d.FieldFK.Field_Name,
+                        "subcategory": Sub_Category.objects.filter(CategoryFK = d),
+                    }
+                )
+            print(context)
+            # return context
+
+        if datasets:
+            for d in datasets:
+                context.append(
+                    {
+                        "subcategory": d.Sub_Name,
+                        "category": d.CategoryFK.Category_Name,
+                        "fields": d.CategoryFK.FieldFK.Field_Name,
+                        "links": Link.objects.filter(Sub_CategoryFK = d)
+                    }
+                )
+            print(context)
+            return context
+        
+        
         # print(datasets)
         # for c in datasets:
         # # print(c.get('Category_FK', None))
@@ -67,7 +95,7 @@ class loginView(TemplateView):
             return redirect(to="/")
         print(user)
         return render(
-            request, "userlogin.html", context={"msg": "Incorrect username or password"}
+            request, "userlogin.html", context={"msg": "Incorrect Username/Password"}
         )
 
 class signup(TemplateView):
@@ -89,6 +117,18 @@ class signup(TemplateView):
             return redirect(to = "/login/")    
         print(form.errors)
         return render(request, "usersignup.html", context={"msg": form.errors})    
+
+class aboutpage(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, "aboutus.html")
+
+class terms(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, "terms.html")
+
+class addlink(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, "addlink.html")
 
 class LogoutView(TemplateView):
     def get(self, request, **kwargs):

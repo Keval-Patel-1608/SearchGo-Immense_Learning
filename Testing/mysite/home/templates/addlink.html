@@ -62,10 +62,61 @@
                     <a class="nav-link" href="/login/" ><span class="fa fa-arrow-circle-right">&nbsp Login</span></a>
                 </li>
                 <li class="nav-item" style="padding-right: 0px;">
-                    <a class="nav-link active" href="/signup/" ><span class="fa fa-user">&nbsp Sign Up</span></a>
+                    <a class="nav-link" href="/signup/" ><span class="fa fa-user">&nbsp Sign Up</span></a>
                 </li>
             </ul>
         </nav>
+
+        <script>
+            var fieldObject = {
+              "Computer Science": {
+                "Blockchain":   ["Introduction to Blockchain", "Decentralized Applications - DApps", "IoT and Blockchain", "Cybersecurity & Blockchain"],
+                "Django":       ["Overview", "Tutorial", "Djago Database", "Project Ideas"],
+                "Python":       ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "Java":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "JavaScript":   ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "C++":          ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "C":            ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "HTML":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "DBMS":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+              },
+              "Data Science": {
+                "Artificial Intelligence": ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Big Data":                ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Cloud Computing":         ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Data Analysis":           ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Data Mining":             ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Machine Learning":        ["Overview", "Trends", "Research Topics", "Project Ideas"],
+
+              }
+            }
+            window.onload = function() {
+              var fieldSel = document.getElementById("field");
+              var categorySel = document.getElementById("category");
+              var subcategorySel = document.getElementById("subcategory");
+              for (var x in fieldObject) {
+                fieldSel.options[fieldSel.options.length] = new Option(x, x);
+              }
+              fieldSel.onchange = function() {
+                //empty subcategorys- and categorys- dropdowns
+                subcategorySel.length = 1;
+                categorySel.length = 1;
+                //display correct values
+                for (var y in fieldObject[this.value]) {
+                  categorySel.options[categorySel.options.length] = new Option(y, y);
+                }
+              }
+              categorySel.onchange = function() {
+                //empty subcategorys dropdown
+                subcategorySel.length = 1;
+                //display correct values
+                var z = fieldObject[fieldSel.value][this.value];
+                for (var i = 0; i < z.length; i++) {
+                  subcategorySel.options[subcategorySel.options.length] = new Option(z[i], z[i]);
+                }
+              }
+            }
+        </script>
 
         <section style="background-color: #D6E4ED ; background-image: url('{% static 'imgs/bg_lib.jpg' %}'); background-repeat: no-repeat; background-attachment: relative ; background-size: 100% 100%;">
             <br /><br />
@@ -77,13 +128,13 @@
                             
                                 <div class="row" style="text-align: center;">
                                     <div class="col">
-                                            <img width="100px" src="{% static 'imgs/g_profile.png' %}" />
+                                            <img width="150px" src="{% static 'imgs/add_link.svg' %}" />
                                     </div>
                                 </div>
     
                                 <div class="row" style="text-align: center;">
                                     <div class="col">
-                                            <h4>User SignUp</h4>
+                                            <h4>Add New Link</h4>
                                     </div>
                                 </div>
     
@@ -95,18 +146,19 @@
     
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Full Name :</label>
+                                        <label>Field :</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" ID="TextBox1" name = "first_name" style="border-radius: 10px;" placeholder="Enter Full Name" required="true"></input>
+                                            <select class="form-control" name="field" id="field" ID="TextBox2" style="border-radius: 10px;">                                          
+                                                <option value="" selected="selected">Select Field</option>
+                                            </select>
                                         </div>
                                     </div>
                                 
                                     <div class="col-md-6">
-                                        <label>Gender :</label>
+                                        <label>Category :</label>
                                         <div class="form-group" >
-                                            <select id="gender" class="form-control" name ="gender" ID="TextBox2" style="border-radius: 10px;">                                          
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
+                                            <select name="category" id="category" class="form-control" style="border-radius: 10px;">  
+                                                <option value="" selected="selected">Select Category</option>
                                             </select>
                                         </div>
                                     </div>
@@ -114,62 +166,42 @@
     
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Contact Number :</label>
+                                        <label>Subcategory :</label>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" ID="TextBox3" name="contact" style="border-radius: 10px;" placeholder="Enter Contact Number" required="true">
+                                            <select name="subcategory" id="subcategory" class="form-control" style="border-radius: 10px;">
+                                                <option value="" selected="selected">Select Subcategory</option>
+                                            </select>                            
                                         </div>
                                     </div>
                                 
                                     <div class="col-md-6">
-                                        <label>Email ID :</label>
+                                        <label>Link :</label>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" ID="TextBox4" name="email" style="border-radius: 10px;" placeholder="Enter Email ID" required="true">
+                                            <input type="email" class="form-control" ID="TextBox4" name="email" style="border-radius: 10px;" placeholder="Enter Link" required="true">
                                         </div>
                                     </div>
                                 </div>                                                                    
     
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Username :</label>
+                                    <div class="col-md-12">
+                                        <label>Link Description :</label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="TextBox8" name="username" style="border-radius: 10px;" placeholder="Enter Username" required="true">
-                                        </div>
-                                    </div>
-                                
-                                    <div class="col-md-6">
-                                        <label>Password :</label>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="TextBox9" name="password1" style="border-radius: 10px;" placeholder="Enter Password" required="true">
+                                            <input type="text" class="form-control" id="TextBox8" name="description" style="border-radius: 10px;" placeholder="Eg. Role of Blockchain in Cybersecurity - GeeksforGeeks" required="true">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div id="error_display" style="display: none"> -->
-                                    <h4 style="color: #D6E4ED; background-color: rgb(167, 58, 58); border-radius: 10px;">
-                                        <!-- <div style="text-align: center; padding-top: 15px;">
-                                            ERROR
-                                        </div>
-                                        <hr style="width: 95%; height: 1px; border-radius: 1px; background-color: D6E4ED;"> -->
+                                    <!-- <h4 style="color: #D6E4ED; background-color: rgb(167, 58, 58); border-radius: 10px;">
                                         {{ msg }}
-                                    </h4>
-                                <!-- </div> -->
+                                    </h4> -->
                                 <div class="row">
                                     <div class="col">
                                     
                                         <div class="form-group">
-                                            <input type="submit" onclick="error_msg()" class="btn btn-primary btn-block btn-lg" id="Button2" style="border-radius: 10px;" value="Sign Up">                                                                        
+                                            <input type="submit" onclick="error_msg()" class="btn btn-primary btn-block btn-lg" id="Button2" style="border-radius: 10px;" value="Add">                                                                        
                                         </div>
     
                                     </div>  
                                 </div>
-                                
-                                <!-- <script>
-                                    function error_msg() {
-                                        var x = document.getElementById("error_display");
-                                        if (x.style.display === "none") {
-                                            x.style.display = "block";
-                                        }
-                                    }
-                                </script> -->
                             </div>
                         </div>
                     </div>

@@ -39,17 +39,20 @@
             ::-webkit-scrollbar {
             width: 15px;
             height: 15px;
+            background-color: rgb(29, 30, 34);
+
             }
             ::-webkit-scrollbar-track {
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.1);
             /* background-color: rgb(29, 30, 34); */
-            margin-block: 0.5em;
+            margin-block: 0.5rem;
             }
             ::-webkit-scrollbar-thumb {
             background-image: linear-gradient(45deg, #00aeff, #a68eff);
             border-radius: 10px;
             -webkit-box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
+            box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
             }
         </style>
 
@@ -60,14 +63,14 @@
                 <a class="navbar-brand" href="/" style="color: #7ed0ff; font-size: 50px; margin-top: 7px; margin-left: 10px;"><span class="fab fa-searchengin">&nbsp SearchGo</span></a>
             
                 <!-- Links -->
-                <ul class="navbar-nav" style="font-size: 25px; padding-left: 15%; ">
-                
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/" style="color: rgb(54, 102, 192);"></a>
-                    </li> -->
+                <ul class="navbar-nav" style="font-size: 25px; padding-left: 13%; ">                                    
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% static '#' %}" style="color: rgb(54, 102, 192);">About</a>
+                        <a class="nav-link" href="/about/" style="color: rgb(54, 102, 192);">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/terms/" style="color: rgb(54, 102, 192);">Terms</a>
                     </li>
                 
                     <!-- Dropdown -->
@@ -98,11 +101,16 @@
                     {% else %}
 
                     <!-- LOG-OUT -->
-                    <li class="nav-item" style="margin-right: 370px;">
-                        <button class="form-control border-primary rounded-pill button-hover" style="font-size: 20px; background-color: #d1f0ff; margin-top: 10px;">
-                            <a href="/logout/" class="nav-link" style="color: #4da9ff; margin-top: -10px;"><span class="fa fa-sign-out-alt">&nbsp Logout</span></a>
+                    <li class="nav-item" style="margin-right: 20px;">
+                        <button class="form-control border-primary rounded-pill button-hover" style="font-size: 20px; background-color: transparent; margin-top: 5px;">
+                            <a href="/addlink/" class="nav-link" style="color: #4da9ff; margin-top: -5px;"><img width="20px" src= "{% static 'imgs/add_link.png' %}"/>&nbsp Add Link</a>
                         </button>
                     </li>
+                    <li class="nav-item" style="margin-right: 300px;">
+                        <button class="form-control border-primary rounded-pill button-hover" style="font-size: 20px; background-color: transparent; margin-top: 5px;">
+                            <a href="/logout/" class="nav-link" style="color: #4da9ff; margin-top: -5px;"><span class="fa fa-sign-out">&nbsp Logout</span></a>
+                        </button>
+                    </li>                
                     {% endif %}
                 </ul>
 
@@ -243,7 +251,7 @@
                                                 <div class="card-body gradient-45deg-light-blue-cyan gradient-shadow white-text">
                                                     <h4 class="card-title">Blockchain</h4>
                                                     <p class="card-text">Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a business network.</p>
-                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>                                                    </a>
+                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"></a>
                                                 </div>
         
                                             </div>
@@ -254,7 +262,7 @@
                                                 <div class="card-body white-text gradient-45deg-green-teal gradient-shadow">
                                                     <h4 class="card-title">Django</h4>
                                                     <p class="card-text">Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>
-                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>                                                    </a>
+                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>
                                                     
                                                 </div>
                                             </div>
@@ -265,7 +273,7 @@
                                                 <div class="card-body white-text gradient-45deg-light-blue-cyan gradient-shadow">
                                                     <h4 class="card-title">Python</h4>
                                                     <p class="card-text">Python is an interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability. </p>
-                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>                                                    </a>
+                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"> </a>
         
                                                 </div>
                                             </div>
@@ -383,12 +391,12 @@
                                             Introduction to Blockchain    
                                         <hr style="width: 96%;">
                                         </div>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www.investopedia.com/terms/b/blockchain.asp" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
                                                 Blockchain Definition: What You Need to Know - Investopedia
                                             </div>
                                         </a>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www.euromoney.com/learning/blockchain-explained/what-is-blockchain#:~:text=Blockchain%20is%20a%20system%20of,computer%20systems%20on%20the%20blockchain" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
                                                 What is blockchain? - Euromoney Learning
                                             </div>                                    
@@ -405,12 +413,12 @@
                                             Decentralized Applications    
                                         <hr style="width: 96%;">
                                         </div>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://blockchainhub.net/decentralized-applications-dapps/" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
                                                 What is a dApp? Decentralized Application on the Blockchain - Blockchainhub
                                             </div>
                                         </a>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://ethereum.org/en/dapps/" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
                                                 Decentralized applications (dapps) - Ethereum.org
                                             </div>                                    
@@ -430,12 +438,12 @@
                                             Iot and Blockchain    
                                         <hr style="width: 96%;">
                                         </div>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www.ibm.com/topics/blockchain-iot" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
                                                 What is IoT with blockchain? - IBM
                                             </div>
                                         </a>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www.i-scoop.eu/internet-of-things-iot/blockchain-iot/" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
                                                 Blockchain and the Internet of Things - Iscoop.eu
                                             </div>                                    
@@ -452,12 +460,12 @@
                                             Cybersecurity and Blockchain    
                                         <hr style="width: 96%;">
                                         </div>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www.geeksforgeeks.org/role-of-blockchain-in-cybersecurity/#:~:text=Blockchain%20is%20a%20shared%2C%20decentralized,Immutable%20records." class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px; margin-bottom: 2%;">                                        
                                                 Role of Blockchain in Cybersecurity - GeeksforGeeks
                                             </div>
                                         </a>
-                                        <a href="#" class="white-text link-hover">
+                                        <a href="https://www2.deloitte.com/tr/en/pages/technology-media-and-telecommunications/articles/blockchain-and-cyber.html" class="white-text link-hover">
                                             <div class="row" style="background-color: rgba(255, 255, 255, 0.05); border-radius: 5px; padding: 3%; font-size: 17px;">                                                                                
                                                 Blockchain and Cybersecurity - Deloitte
                                             </div>                                    
@@ -752,11 +760,19 @@
 					<div class="col-md-12 text-center">
 						<h2 class="footer-heading"><a href="#" class="logo">SearchGo.com</a></h2>
 						<p class="menu">
+                            
+                            {% if user.is_authenticated %}
 							<a href="/">Home</a>
-							<a href="#">About</a>
+							<a href="/about/">About</a>
+							<a href="/terms/">Terms</a>
+                            {% else %}                            
+							<a href="/">Home</a>
+							<a href="/about/">About</a>
+							<a href="/terms/">Terms</a>
 							<a href="/login/">Login</a>
 							<a href="/signup/">SignUp</a>
-							<a href="#">Contact</a>
+                            {% endif %}
+
 						</p>
 						<ul class="ftco-footer-social p-0">
 							<li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
