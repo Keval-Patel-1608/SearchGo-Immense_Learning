@@ -207,9 +207,9 @@
                                     <li class="nav dropdown">
                                         <a class="nav-link dropdown-toggle white-text" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 18px;">Link</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Github</a>
-                                            <a class="dropdown-item" href="#">W3 School</a>
-                                            <a class="dropdown-item" href="#">Tutorial Point</a>
+                                            {% for link in obj.links %}
+                                                <a class="dropdown-item" href="{{ link.Data_link }}">{{ link.link_description }}</a>
+                                            {% endfor %}
                                         </div>
                                     </li>        
                                 </ul>
