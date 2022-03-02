@@ -10,4 +10,5 @@ urlpatterns = [
     path("terms/", views.terms.as_view(), name = 'terms'),
     path("addlink/", views.addlink.as_view(), name = 'addlink'),
     path("logout/", views.LogoutView.as_view()),
+    path("contactus/", views.contactus.as_view(), name = 'contactus'),
 ]

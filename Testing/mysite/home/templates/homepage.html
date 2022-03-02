@@ -8,23 +8,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet" />
-
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />   
-
         <link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
+
+        <!-- Jquery JUMP -->
+        <link href="{% static 'jquery/jquery.min.js' %}" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- carousel -->
         <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-        {% comment %} <script type="text/javascript" src=""></script> {% endcomment %}
         <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
         <script type="text/javascript" src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
         <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
         <!--  -->
-        
-        <!-- dropdown menu -->
-        <link rel="stylesheet" type="text/css" href="{% static 'test_menu/test.css' %}">        
-        <!-- <link rel="stylesheet" href="dropdown_menu/style.css"> -->
-		<!-- <link rel="stylesheet" href="dropdown_menu/main.js"> -->
 
         <!-- footer -->
         <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900'rel="stylesheet">
@@ -56,7 +52,7 @@
             }
         </style>
 
-        <section style="background-color: #D6E4ED; background-image: url('{% static 'imgs/bg_home.jpg' %}'); background-repeat: no-repeat; background-attachment: relative; background-size: 100% 100%;">
+        <section style="background-image: url('{% static 'imgs/bg_home.jpg' %}'); background-repeat: no-repeat; background-attachment: relative; background-size: 100% 91%">
     
             <nav class="navbar navbar-expand-sm navbar-dark ">
                 <!-- Brand -->
@@ -79,7 +75,6 @@
                         <div class="dropdown-menu">
                         <a class="dropdown-item" href="#jump3">Computer Science</a>
                         <a class="dropdown-item" href="#jump4">Data Science</a>
-                        <!-- <a class="dropdown-item" href="#">Link 3</a> -->
                         </div>
                     </li>
 
@@ -100,7 +95,7 @@
                     </li>
                     {% else %}
 
-                    <!-- LOG-OUT -->
+                    <!-- LOG-OUT  / Add Link-->
                     <li class="nav-item" style="margin-right: 20px;">
                         <button class="form-control border-primary rounded-pill button-hover" style="font-size: 20px; background-color: transparent; margin-top: 5px;">
                             <a href="/addlink/" class="nav-link" style="color: #4da9ff; margin-top: -5px;"><img width="20px" src= "{% static 'imgs/add_link.png' %}"/>&nbsp Add Link</a>
@@ -133,28 +128,16 @@
                                 <h1 style="text-align: center; font-size: 70px; margin-top: 100px; color: #2E3B43;" ><b>SearchGo</b></h1>
                             </div>
                         </div>            
-                        {% comment %} searchbar {% endcomment %}
+                        <!-- Searchbar -->
                         <div class="row no-gutters mt-3 align-items-center">
                             <div class="col">
-                                <input class="form-control border-secondary rounded-pill pr-5 " style="margin-top: 10px; padding-top: 35px; padding-bottom: 35px; padding-left: 30px; font-size: 20px;  " type="search" placeholder="search here" name="search1" id="search1">
+                                <input class="form-control border-secondary rounded-pill pr-5 " style="margin-top: 10px; padding-top: 35px; padding-bottom: 35px; padding-left: 30px; font-size: 20px;" type="search" placeholder="search here" name="search1" id="search1">
                             </div>
-                            {% comment %} <div class="col-auto">
-                                    <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" style="margin-top: 10px;" type="button"><a href="#jump"></a></button>
-                                        <button type = "submit" class="fa fa-search" style="font-size: 22px; color: black; border: none; background-color: transparent;" onclick="result_display()"></button>
-                                    </button>
-                            </div>   {% endcomment %}
 
                             <div class="col-auto">
-                                {% comment %} <a href="#jump"></a> {% endcomment %}
-                                    <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5 fa fa-search" style="margin-top: 10px; font-size: 25px; color: black;" type="submit" onclick="result_display()"></button>
-                                    {% comment %} <button type="button"><a href="#jump" class="fa fa-search" onclick="result_display()"></a></button> {% endcomment %}
-                                        {% comment %} <a href="#jump"> {% endcomment %}
-                                            {% comment %} <i class="fa fa-search" style="font-size: 25px; color: black;"></i>  {% endcomment %}
-                                        {% comment %} </a> {% endcomment %}
-                                        {% comment %} <button type = "submit" class="fa fa-search" style="font-size: 22px; color: black; border: none; background-color: transparent;" onclick="result_display()"></button> {% endcomment %}
-                                    {% comment %} </button> {% endcomment %}
-                                {% comment %} </a> {% endcomment %}
-
+                                    <button id="btn1" class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5 fa fa-search" style="margin-top: 10px; font-size: 25px; color: black;" onclick="result_display()" type="submit"></button>                                    
+                                    <!-- <input type="submit" value="GO" class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" style="margin-top: 10px; font-size: 15px; color: black;" onclick="location.href='#jump'; result_display()"> -->
+                                </input>
                             </div>
 
                         </div>  
@@ -245,16 +228,19 @@
                                 <div class="carousel-item active">
                                     <div class="row">
         
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card ">
-                                                <img class="img-fluid" alt="blockchain" src="{% static 'imgs/cards/blockchain.jpg' %}">
-                                                <div class="card-body gradient-45deg-light-blue-cyan gradient-shadow white-text">
-                                                    <h4 class="card-title">Blockchain</h4>
-                                                    <p class="card-text">Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a business network.</p>
-                                                    <a href="#jump1" class="stretched-link" onclick="subcategory_display()"></a>
+                                        <div class="col-md-4 mb-3">                                            
+                                            <button type="submit" id="btn" value="" style="border: none; background-color: transparent; " onclick="subcategory_display()">
+                                                <div class="card ">
+                                                    <img class="img-fluid" alt="blockchain" src="{% static 'imgs/cards/blockchain.jpg' %}">
+                                                    <div class="card-body gradient-45deg-light-blue-cyan gradient-shadow white-text" style="text-align: left; color: transparent;">
+                                                        <h4 class="card-title">Blockchain</h4>
+                                                        <p class="card-text">Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a business network.</p>
+                                                        <!-- <a href="#jump1" class="stretched-link" >  -->
+                                                            <!-- <input type="submit" value="VIEW >>" class="card-text" style="background-color: transparent; border: none; align-items: center;" onclick="location.href='#jump1'; subcategory_display()"> -->
+                                                        <!-- </a>-->
+                                                    </div>        
                                                 </div>
-        
-                                            </div>
+                                            </button>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <div class="card">
@@ -373,7 +359,33 @@
               if (x.style.display === "none") {
                 x.style.display = "block";
               }
+
+            //   $target = $('#ani1');   
+            //   $target.removeClass('fadeLeft');    
+            //   setTimeout("$target.addClass('fadeLeft');",100);
             }
+
+            $(document).ready(function(){
+
+
+                $("#btn").click(function() {
+                    $('html,body').animate({
+                        scrollTop: $("#subcategory").offset().top},
+                        '5000');
+                });
+
+                
+                // $("#btn").click(function(){
+                //     $("#subcategory").show();
+                // });
+                
+            });
+
+            $("#btn1").click(function() {
+                    $('html,body').animate({
+                        scrollTop: $("#jump").offset().top},
+                        '500');
+                });
         </script>
 
         <a id="jump1"></a> 
@@ -565,18 +577,9 @@
                     animation-duration:1s;
                     -webkit-animation-fill-mode:both;
                     animation-fill-mode:both;
-                    /* animation-delay: 1s; */
+                    animation-delay: 0.7s; 
     
-                }
-
-                .animated{
-                    -webkit-animation-duration:1s;
-                    animation-duration:1s;
-                    -webkit-animation-fill-mode:both;
-                    animation-fill-mode:both;
-                    animation-delay: 0.5s;
-    
-                }
+                }                
     
                 .fadeRight{
                     -webkit-animation-name:fadeRight;
@@ -760,15 +763,12 @@
 					<div class="col-md-12 text-center">
 						<h2 class="footer-heading"><a href="#" class="logo">SearchGo.com</a></h2>
 						<p class="menu">
+                            <a href="/">Home</a>
+							<a href="/about/">About</a>
+							<a href="/terms/">Terms</a>
+							<a href="/contactus/">Contact</a>
                             
-                            {% if user.is_authenticated %}
-							<a href="/">Home</a>
-							<a href="/about/">About</a>
-							<a href="/terms/">Terms</a>
-                            {% else %}                            
-							<a href="/">Home</a>
-							<a href="/about/">About</a>
-							<a href="/terms/">Terms</a>
+                            {% if not user.is_authenticated %}							                            
 							<a href="/login/">Login</a>
 							<a href="/signup/">SignUp</a>
                             {% endif %}

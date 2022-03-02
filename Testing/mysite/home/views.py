@@ -6,15 +6,14 @@ from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
+from django.core.mail import send_mail
 from datetime import datetime, timedelta
 from django.http import HttpResponse
-# from matplotlib.style import context
 from numpy import empty
 from .forms import SignUpForm
 from .models import Fields, Category, Sub_Category, Link
 
 User = get_user_model()
-
 
 class homePage(TemplateView):
     def get(self, request, **kwargs):
@@ -145,6 +144,26 @@ class addlink(TemplateView):
     def get(self, request, **kwargs):
         return render(request, "addlink.html")
 
+    def post(self, request, **kwargs):
+        pass
+
+class contactus(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, "contactus.html")
+
+    def post(self, request, **kwargs):
+        FullName = request.POST["first"]
+        user_email =request.POST["email"]
+        suggestion = request.POST["suggestion"]
+
+        send_mail(
+            'Suggestion from:-' + FullName, # fullname as subject of mail
+            suggestion, # suggestion
+            user_email, # from
+            ['rishishukla507@gmail.com'], # to
+        )
+
+        return render(request, "contactus.html")
 
 class LogoutView(TemplateView):
     def get(self, request, **kwargs):
