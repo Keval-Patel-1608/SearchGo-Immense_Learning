@@ -33,7 +33,9 @@ class homePage(TemplateView):
         if search_word == "" or search_word == " ":
             return render(request, "homepage.html")
         context = self.search(search_word)
-        return render(request, "homepage.html", {"context": context})
+        if context:
+            return render(request, "homepage.html", {"context": context})
+        return render(request, "homepage.html")
 
     def search(self, search_word):
         datasets_sub = Sub_Category.objects.filter(Sub_Name__contains=search_word)
@@ -84,6 +86,10 @@ class homePage(TemplateView):
                 )
             print(context)
             return context
+
+        if not dataset_field and not dataset_category and not datasets_sub:
+            context = []
+            return context    
 
         # print(datasets)
         # for c in datasets:
