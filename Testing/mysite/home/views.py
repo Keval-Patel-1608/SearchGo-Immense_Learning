@@ -145,7 +145,17 @@ class addlink(TemplateView):
         return render(request, "addlink.html")
 
     def post(self, request, **kwargs):
-        pass
+        subcat = Sub_Category.objects.get(pk=request.POST["subcategory"])
+        link = Link.objects.create(
+            Data_link=request.POST["link"],
+            Count=0,
+            link_description=request.POST["description"],
+            Sub_CategoryFK=subcat,
+        )
+        link.save()
+        print(link)
+        print(Link.objects.filter(link_description=request.POST["description"]))
+        return render(request, "addlink.html", {"msg": "Link Added"})
 
 class contactus(TemplateView):
     def get(self, request, **kwargs):

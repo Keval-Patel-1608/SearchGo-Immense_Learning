@@ -70,23 +70,23 @@
         <script>
             var fieldObject = {
               "Computer Science": {
-                "Blockchain":   ["Introduction to Blockchain", "Decentralized Applications - DApps", "IoT and Blockchain", "Cybersecurity & Blockchain"],
-                "Django":       ["Overview", "Tutorial", "Djago Database", "Project Ideas"],
-                "Python":       ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "Java":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "JavaScript":   ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "C++":          ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "C":            ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "HTML":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
-                "DBMS":         ["Overview", "Tutorial", "Project Ideas", "Interview Questions"],
+                "Blockchain":   {"Introduction to Blockchain": 0, "Decentralized Applications - DApps": 1, "IoT and Blockchain": 2, "Cybersecurity & Blockchain": 3},
+                "Python":       {"Overview": 8, "Tutorial": 9, "Project Ideas": 10, "Interview Questions": 11},
+                "Django":       {"Overview": 4, "Tutorial": 5, "Djago Database": 6, "Project Ideas": 7},
+                "Java":         {"Overview": 12, "Tutorial": 13, "Project Ideas": 14, "Interview Questions": 15},
+                "JavaScript":   {"Overview": 16, "Tutorial": 17, "Project Ideas": 18, "Interview Questions": 19},
+                "C++":          {"Overview": 20, "Tutorial": 21, "Project Ideas": 22, "Interview Questions": 23},
+                "C":            {"Overview": 24, "Tutorial": 25, "Project Ideas": 26, "Interview Questions": 27},
+                "HTML":         {"Overview": 28, "Tutorial": 29, "Project Ideas": 30, "Interview Questions": 31},
+                "DBMS":         {"Overview": 32, "Tutorial": 33, "Project Ideas": 34, "Interview Questions": 35},
               },
               "Data Science": {
-                "Artificial Intelligence": ["Overview", "Trends", "Research Topics", "Project Ideas"],
-                "Big Data":                ["Overview", "Trends", "Research Topics", "Project Ideas"],
-                "Cloud Computing":         ["Overview", "Trends", "Research Topics", "Project Ideas"],
-                "Data Analysis":           ["Overview", "Trends", "Research Topics", "Project Ideas"],
-                "Data Mining":             ["Overview", "Trends", "Research Topics", "Project Ideas"],
-                "Machine Learning":        ["Overview", "Trends", "Research Topics", "Project Ideas"],
+                "Artificial Intelligence": {"Overview": 36, "Trends": 37, "Research Topics": 38, "Project Ideas": 39},
+                "Big Data":                {"Overview": 40, "Trends": 41, "Research Topics": 42, "Project Ideas": 43},
+                "Cloud Computing":         {"Overview": 44, "Trends": 45, "Research Topics": 46, "Project Ideas": 47},
+                "Data Analysis":           {"Overview": 48, "Trends": 49, "Research Topics": 50, "Project Ideas": 51},
+                "Data Mining":             {"Overview": 52, "Trends": 53, "Research Topics": 54, "Project Ideas": 55},
+                "Machine Learning":        {"Overview": 56, "Trends": 57, "Research Topics": 58, "Project Ideas": 59},
 
               }
             }
@@ -111,8 +111,8 @@
                 subcategorySel.length = 1;
                 //display correct values
                 var z = fieldObject[fieldSel.value][this.value];
-                for (var i = 0; i < z.length; i++) {
-                  subcategorySel.options[subcategorySel.options.length] = new Option(z[i], z[i]);
+                for (var i in z) {
+                  subcategorySel.options[subcategorySel.options.length] = new Option(i, z[i]);
                 }
               }
             }
@@ -148,7 +148,7 @@
                                     <div class="col-md-6">
                                         <label>Field :</label>
                                         <div class="form-group">
-                                            <select class="form-control" name="field" id="field" ID="TextBox2" style="border-radius: 10px;">                                          
+                                            <select class="form-control" name="field" id="field" ID="TextBox2" style="border-radius: 10px; required = "true" ">                                          
                                                 <option value="" selected="selected">Select Field</option>
                                             </select>
                                         </div>
@@ -157,8 +157,8 @@
                                     <div class="col-md-6">
                                         <label>Category :</label>
                                         <div class="form-group" >
-                                            <select name="category" id="category" class="form-control" style="border-radius: 10px;">  
-                                                <option value="" selected="selected">Select Category</option>
+                                            <select name="category" id="category" class="form-control" style="border-radius: 10px;" required = "true">  
+                                                {% comment %} <option value="" selected="selected">Select Category</option> {% endcomment %}
                                             </select>
                                         </div>
                                     </div>
@@ -168,8 +168,8 @@
                                     <div class="col-md-6">
                                         <label>Subcategory :</label>
                                         <div class="form-group">
-                                            <select name="subcategory" id="subcategory" class="form-control" style="border-radius: 10px;">
-                                                <option value="" selected="selected">Select Subcategory</option>
+                                            <select name="subcategory" id="subcategory" class="form-control" style="border-radius: 10px;" required = "true" placeholder="subcategory">
+                                                {% comment %} <option value="" selected="selected">Select Subcategory</option> {% endcomment %}
                                             </select>                            
                                         </div>
                                     </div>
@@ -177,7 +177,7 @@
                                     <div class="col-md-6">
                                         <label>Link :</label>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" ID="TextBox4" name="email" style="border-radius: 10px;" placeholder="Enter Link" required="true">
+                                            <input type="link" class="form-control" ID="TextBox4" name="link" style="border-radius: 10px;" placeholder="Enter Link" required="true">
                                         </div>
                                     </div>
                                 </div>                                                                    
@@ -190,9 +190,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <!-- <h4 style="color: #D6E4ED; background-color: rgb(167, 58, 58); border-radius: 10px;">
+                                    <h4 style="color: #D6E4ED; background-color: rgb(167, 58, 58); border-radius: 10px;">
                                         {{ msg }}
-                                    </h4> -->
+                                    </h4>
                                 <div class="row">
                                     <div class="col">
                                     
